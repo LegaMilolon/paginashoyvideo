@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audi Q8 — Domina cada horizonte</title>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;600;700&family=Inter:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    :root {
+      --gold:      #C9A84C;
+      --gold-light:#e8c96e;
+      --dark:      #0a0a08;
+      --dark2:     #111110;
+      --dark3:     #181816;
+      --dark4:     #1f1f1c;
+      --silver:    #a0a090;
+      --white:     #f5f4ee;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+
+    body {
+      background: var(--dark);
+      color: var(--white);
+      font-family: 'Inter', sans-serif;
+      overflow-x: hidden;
+    }
+
+    /* ── NAV ────────────────────────────────────── */
+    nav {
+      position: fixed;
+      top: 0; left: 0; right: 0;
+      z-index: 100;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.4rem 4rem;
+      background: linear-gradient(to bottom, rgba(0,0,0,0.9), transparent);
+    }
+
+    .nav-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.4rem;
+      font-weight: 600;
+      letter-spacing: 0.5em;
+      color: var(--white);
+      text-transform: uppercase;
+    }
+
+    .nav-logo span { color: var(--gold); }
+
+    .nav-links {
+      display: flex;
+      gap: 2.5rem;
+      list-style: none;
+    }
+
+    .nav-links a {
+      text-decoration: none;
+      color: var(--silver);
+      font-size: 0.75rem;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      transition: color 0.3s;
+    }
+
+    .nav-links a:hover { color: var(--gold-light); }
+
+    /* ── HERO ───────────────────────────────────── */
+    .hero {
+      position: relative;
+      height: 100vh;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      align-items: flex-start;
+      padding: 0 4rem 8rem;
+      overflow: hidden;
+      background:
+        radial-gradient(ellipse at 60% 30%, rgba(60,45,10,0.5) 0%, transparent 60%),
+        radial-gradient(ellipse at 20% 80%, rgba(30,25,5,0.4) 0%, transparent 50%),
+        linear-gradient(160deg, #1a1508 0%, #0a0a04 50%, #000 100%);
+    }
+
+    /* Luxury texture overlay */
+    .hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image:
+        repeating-linear-gradient(
+          45deg,
+          transparent,
+          transparent 40px,
+          rgba(201,168,76,0.02) 40px,
+          rgba(201,168,76,0.02) 41px
+        );
+    }
+
+    /* Decorative arc */
+    .hero-arc {
+      position: absolute;
+      top: -20%;
+      right: -10%;
+      width: 80%;
+      height: 100%;
+      border: 1px solid rgba(201,168,76,0.08);
+      border-radius: 50%;
+      pointer-events: none;
+      animation: arcRotate 30s linear infinite;
+    }
+
+    .hero-arc::before {
+      content: '';
+      position: absolute;
+      top: 15%;
+      left: 15%;
+      right: 15%;
+      bottom: 15%;
+      border: 1px solid rgba(201,168,76,0.05);
+      border-radius: 50%;
+    }
+
+    @keyframes arcRotate {
+      from { transform: rotate(0deg); }
+      to   { transform: rotate(360deg); }
+    }
+
+    /* SUV silhouette */
+    .hero-car {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      width: 65%;
+      height: 65%;
+      background:
+        radial-gradient(ellipse at 50% 100%, rgba(201,168,76,0.12) 0%, transparent 50%),
+        radial-gradient(ellipse at 50% 50%, rgba(100,80,15,0.08) 0%, transparent 80%);
+      clip-path: polygon(
+        3% 100%, 6% 55%, 12% 35%, 20% 20%,
+        30% 10%, 50% 5%, 70% 10%, 82% 20%,
+        90% 35%, 95% 55%, 100% 100%
+      );
+    }
+
+    /* Golden light beam */
+    .hero-beam {
+      position: absolute;
+      top: 0;
+      right: 25%;
+      width: 1px;
+      height: 100%;
+      background: linear-gradient(to bottom, rgba(201,168,76,0.4), transparent 60%);
+      transform: rotate(8deg);
+      transform-origin: top center;
+      animation: beamShimmer 4s ease-in-out infinite;
+    }
+
+    @keyframes beamShimmer {
+      0%, 100% { opacity: 0.4; }
+      50%       { opacity: 0.9; }
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 600px;
+    }
+
+    .hero-eyebrow {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+      animation: fadeInUp 0.8s ease both;
+    }
+
+    .eyebrow-line {
+      width: 40px;
+      height: 1px;
+      background: var(--gold);
+    }
+
+    .eyebrow-text {
+      font-size: 0.7rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+    }
+
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+
+    .hero-model {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(4.5rem, 12vw, 9rem);
+      font-weight: 700;
+      line-height: 0.9;
+      letter-spacing: -0.01em;
+      color: var(--white);
+      animation: fadeInUp 0.9s ease 0.15s both;
+    }
+
+    .hero-model span {
+      color: var(--gold);
+      font-style: italic;
+    }
+
+    .hero-tagline {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-style: italic;
+      color: var(--silver);
+      margin-top: 1rem;
+      letter-spacing: 0.05em;
+      animation: fadeInUp 0.9s ease 0.3s both;
+    }
+
+    .hero-divider {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin: 2rem 0;
+      animation: fadeInUp 0.9s ease 0.45s both;
+    }
+
+    .hero-divider::before, .hero-divider::after {
+      content: '';
+      height: 1px;
+      background: rgba(201,168,76,0.25);
+    }
+
+    .hero-divider::before { width: 30px; }
+    .hero-divider::after  { flex: 1; max-width: 80px; }
+
+    .hero-divider-diamond {
+      width: 6px;
+      height: 6px;
+      background: var(--gold);
+      transform: rotate(45deg);
+    }
+
+    .hero-desc {
+      font-size: 0.9rem;
+      line-height: 1.9;
+      color: #80806e;
+      max-width: 440px;
+      animation: fadeInUp 0.9s ease 0.55s both;
+    }
+
+    .hero-cta {
+      display: flex;
+      gap: 1.5rem;
+      margin-top: 2.5rem;
+      animation: fadeInUp 0.9s ease 0.7s both;
+    }
+
+    .btn-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: var(--gold);
+      color: var(--dark);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      transition: background 0.3s, box-shadow 0.3s, transform 0.2s;
+    }
+
+    .btn-gold:hover {
+      background: var(--gold-light);
+      box-shadow: 0 0 35px rgba(201,168,76,0.3);
+      transform: translateY(-2px);
+    }
+
+    .btn-outline-gold {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.7rem;
+      background: transparent;
+      color: var(--gold);
+      text-decoration: none;
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.25em;
+      text-transform: uppercase;
+      padding: 1rem 2.2rem;
+      border: 1px solid rgba(201,168,76,0.35);
+      transition: border-color 0.3s, color 0.3s, transform 0.2s;
+    }
+
+    .btn-outline-gold:hover {
+      border-color: var(--gold);
+      transform: translateY(-2px);
+    }
+
+    /* ── LUXURY STRIP ───────────────────────────── */
+    .luxury-strip {
+      background: linear-gradient(90deg, var(--dark2), var(--dark3), var(--dark2));
+      border-top: 1px solid rgba(201,168,76,0.12);
+      border-bottom: 1px solid rgba(201,168,76,0.12);
+      padding: 2rem 4rem;
+      display: flex;
+      justify-content: center;
+      gap: 6rem;
+      flex-wrap: wrap;
+    }
+
+    .strip-item {
+      text-align: center;
+    }
+
+    .strip-value {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 2.2rem;
+      font-weight: 600;
+      color: var(--gold);
+    }
+
+    .strip-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.3em;
+      text-transform: uppercase;
+      color: #50503e;
+      margin-top: 0.2rem;
+    }
+
+    .strip-sep {
+      width: 1px;
+      background: rgba(201,168,76,0.15);
+      align-self: stretch;
+    }
+
+    /* ── FEATURES ───────────────────────────────── */
+    .features {
+      background: var(--dark2);
+      padding: 7rem 4rem;
+    }
+
+    .section-label {
+      font-size: 0.65rem;
+      letter-spacing: 0.45em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 0.5rem;
+    }
+
+    .section-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.2rem, 4vw, 3.2rem);
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 4rem;
+      line-height: 1.2;
+    }
+
+    .features-layout {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .feature-list {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+
+    .feature-item {
+      display: flex;
+      gap: 1.5rem;
+      padding: 2rem 0;
+      border-bottom: 1px solid rgba(201,168,76,0.08);
+      transition: padding-left 0.3s;
+      cursor: default;
+    }
+
+    .feature-item:hover { padding-left: 0.5rem; }
+
+    .fi-icon {
+      font-size: 1.6rem;
+      flex-shrink: 0;
+      width: 40px;
+      text-align: center;
+    }
+
+    .fi-body {}
+
+    .fi-title {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: var(--white);
+      margin-bottom: 0.4rem;
+    }
+
+    .fi-desc {
+      font-size: 0.82rem;
+      line-height: 1.8;
+      color: #60604e;
+    }
+
+    .features-visual {
+      position: relative;
+      height: 480px;
+      background: var(--dark3);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+
+    .features-visual::before {
+      content: 'Q8';
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 14rem;
+      font-weight: 700;
+      color: rgba(201,168,76,0.04);
+      position: absolute;
+    }
+
+    .vis-rings {
+      position: absolute;
+      display: flex;
+      gap: 0;
+    }
+
+    .vis-ring {
+      width: 55px;
+      height: 55px;
+      border: 2px solid rgba(201,168,76,0.3);
+      border-radius: 50%;
+      margin-left: -14px;
+    }
+
+    .vis-ring:first-child { margin-left: 0; }
+
+    .vis-tagline {
+      position: absolute;
+      bottom: 2rem;
+      left: 0;
+      right: 0;
+      text-align: center;
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1rem;
+      font-style: italic;
+      color: rgba(201,168,76,0.4);
+      letter-spacing: 0.1em;
+    }
+
+    /* ── CTA ────────────────────────────────────── */
+    .cta-section {
+      background:
+        radial-gradient(ellipse at 50% 0%, rgba(60,45,10,0.4) 0%, transparent 60%),
+        var(--dark);
+      padding: 9rem 4rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .cta-section::before {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 600px;
+      height: 600px;
+      border: 1px solid rgba(201,168,76,0.06);
+      border-radius: 50%;
+    }
+
+    .cta-section::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      width: 400px;
+      height: 400px;
+      border: 1px solid rgba(201,168,76,0.08);
+      border-radius: 50%;
+    }
+
+    .cta-content {
+      position: relative;
+      z-index: 2;
+    }
+
+    .cta-section .section-title {
+      font-size: clamp(2.5rem, 5vw, 4.5rem);
+      margin-bottom: 1.2rem;
+    }
+
+    .cta-section p {
+      font-size: 0.95rem;
+      color: #50504e;
+      max-width: 480px;
+      margin: 0 auto 3rem;
+      line-height: 1.9;
+    }
+
+    /* ── FOOTER ─────────────────────────────────── */
+    footer {
+      background: #000;
+      border-top: 1px solid rgba(201,168,76,0.1);
+      padding: 3rem 4rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .footer-logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.8rem;
+      font-weight: 600;
+      letter-spacing: 0.5em;
+      color: var(--white);
+    }
+
+    .footer-logo span { color: var(--gold); }
+
+    .footer-copy {
+      font-size: 0.72rem;
+      color: #333;
+      letter-spacing: 0.08em;
+    }
+
+    .footer-rings {
+      display: flex;
+    }
+
+    .ring {
+      width: 28px;
+      height: 28px;
+      border: 2px solid #333;
+      border-radius: 50%;
+      margin-left: -7px;
+      transition: border-color 0.3s;
+    }
+
+    .ring:first-child { margin-left: 0; }
+    .ring:hover { border-color: var(--gold); }
+
+    @media (max-width: 768px) {
+      nav { padding: 1rem 1.5rem; }
+      .nav-links { display: none; }
+      .hero, .features, .cta-section { padding-left: 1.5rem; padding-right: 1.5rem; }
+      .hero { padding-bottom: 5rem; }
+      .luxury-strip { gap: 2rem; padding: 1.5rem; }
+      .strip-sep { display: none; }
+      .features-layout { grid-template-columns: 1fr; }
+      .features-visual { height: 250px; }
+      footer { flex-direction: column; gap: 1.5rem; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- NAV -->
+  <nav>
+    <div class="nav-logo">AUDI<span> ·</span></div>
+    <ul class="nav-links">
+      <li><a href="#">Modelo</a></li>
+      <li><a href="#">Lujo</a></li>
+      <li><a href="#">Tecnología</a></li>
+      <li><a href="#">Contacto</a></li>
+    </ul>
+  </nav>
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="hero-arc"></div>
+    <div class="hero-car"></div>
+    <div class="hero-beam"></div>
+    <div class="hero-content">
+      <div class="hero-eyebrow">
+        <div class="eyebrow-line"></div>
+        <span class="eyebrow-text">SUV Premium · 2025</span>
+      </div>
+      <h1 class="hero-model">AUDI<br /><span>Q8</span></h1>
+      <p class="hero-tagline">Donde el lujo encuentra el poder.</p>
+      <div class="hero-divider">
+        <div class="hero-divider-diamond"></div>
+      </div>
+      <p class="hero-desc">
+        Un SUV que redefine lo que significa la excelencia.
+        Interior de piel Valcona. Suspensión air-adaptativa.
+        El Q8 no compromete ni en comodidad ni en dominio.
+      </p>
+      <div class="hero-cta">
+        <a href="#" class="btn-gold">Explorar el Q8</a>
+        <a href="#" class="btn-outline-gold">Solicitar prueba</a>
+      </div>
+    </div>
+  </section>
+
+  <!-- LUXURY STRIP -->
+  <div class="luxury-strip">
+    <div class="strip-item">
+      <div class="strip-value">340</div>
+      <div class="strip-label">CV Máximos</div>
+    </div>
+    <div class="strip-sep"></div>
+    <div class="strip-item">
+      <div class="strip-value">5.9 s</div>
+      <div class="strip-label">0 – 100 km/h</div>
+    </div>
+    <div class="strip-sep"></div>
+    <div class="strip-item">
+      <div class="strip-value">250</div>
+      <div class="strip-label">km/h Limitados</div>
+    </div>
+    <div class="strip-sep"></div>
+    <div class="strip-item">
+      <div class="strip-value">V6</div>
+      <div class="strip-label">48V Mild-Hybrid</div>
+    </div>
+  </div>
+
+  <!-- FEATURES -->
+  <section class="features">
+    <p class="section-label">Refinamiento</p>
+    <h2 class="section-title">Diseñado para quienes<br />saben distinguir lo mejor</h2>
+    <div class="features-layout">
+      <div class="feature-list">
+        <div class="feature-item">
+          <div class="fi-icon">🪑</div>
+          <div class="fi-body">
+            <h3 class="fi-title">Interior Valcona</h3>
+            <p class="fi-desc">Piel de primera calidad con costuras contrastantes y paneles de aluminio bruñido. Un habitáculo que compite con los mejores sedanes del mundo.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">📱</div>
+          <div class="fi-body">
+            <h3 class="fi-title">MMI Touch Response</h3>
+            <p class="fi-desc">Dos pantallas táctiles integradas que controlan cada función. Interfaz fluida, respuesta háptica y conectividad total.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">🌬️</div>
+          <div class="fi-body">
+            <h3 class="fi-title">Suspensión Air Adaptativa</h3>
+            <p class="fi-desc">Ajuste dinámico de la altura y amortiguación en tiempo real. Confort que se adapta al terreno antes de que lo sientas.</p>
+          </div>
+        </div>
+        <div class="feature-item">
+          <div class="fi-icon">🔦</div>
+          <div class="fi-body">
+            <h3 class="fi-title">Matrix LED HD</h3>
+            <p class="fi-desc">109 segmentos de LED con control individual. Iluminación de precisión quirúrgica sin deslumbrar a otros conductores.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="features-visual">
+        <div class="vis-rings">
+          <div class="vis-ring"></div>
+          <div class="vis-ring"></div>
+          <div class="vis-ring"></div>
+          <div class="vis-ring"></div>
+        </div>
+        <p class="vis-tagline">"The Prestige SUV"</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- CTA -->
+  <section class="cta-section">
+    <div class="cta-content">
+      <p class="section-label">Experiencia Q8</p>
+      <h2 class="section-title">El SUV de lujo<br />que mereces</h2>
+      <p>Desde las calles de la ciudad hasta las carreteras de montaña, el Q8 domina cada escenario con gracia y poder. Conócelo en persona.</p>
+      <a href="#" class="btn-gold" style="font-size:0.8rem; padding: 1.1rem 3rem;">Agendar una visita</a>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="footer-logo">AUDI<span> ·</span></div>
+    <p class="footer-copy">© 2025 Audi AG. Vorsprung durch Technik.</p>
+    <div class="footer-rings">
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+      <div class="ring"></div>
+    </div>
+  </footer>
+
+</body>
+</html>
